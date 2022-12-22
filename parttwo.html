@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" onmousedown = "react(events, 'cornflowerblue');" onmouseup="react(events, 'white');" oncontextmenu="react(events, 'white');" >
+<head>
+    <title>Document</title>
+    <script>
+        function initalize()
+        {
+            purpleCar = document.getElementById("pcar");
+            speedInput = document.getElementById("speedmeter");
+
+            keyLogOut = document.getElementById("log");
+            keyLog = ""; 
+            xCoord = 250;
+            yCoord = 345; 
+        }
+        function logKey()
+        {
+            var spd = parseInt(speedInput.value);
+            var dir = "";
+            if(e.which == FORWARD)
+            {
+                yCoord -= spd; 
+                dir = "forward";
+            }
+            else{
+                if(e.which == BACKWARD)
+                {
+                    yCoord += spd;
+                    dir = "backward";
+                }
+            }
+            keyLog = "The car moved" + dir + ".<hr/>" + keyLog;
+            display();
+        }
+        function display()
+        {
+            keyLogOut.innerHTML = keyLog; 
+            purpleCar.style.top = yCoord + "px";
+            purpleCar.style.left = xCoord + "px";
+        }
+    </script>
+</head>
+<body onload = "initalize();">
+    Speed : <input id = "speedmeter" value = "1" type = 'number' /> <br /><br/>
+    <div id = 'log'></div>
+    <img id = "pcar" src = purplecar.png>
+</body>
+</html>
